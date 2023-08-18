@@ -233,6 +233,7 @@ To see the list of all REST APIs view "REST APIs Documentation".<br>
 4) [Get Detail Usage Report of Users API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1a/blob/main/REST%20APIs%20Documentation/User%20Management/Get%20Detail%20Usage%20Report%20of%20Users%20API.md)<br>
 5) [Update User API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1a/blob/main/REST%20APIs%20Documentation/User%20Management/Update%20User%20API.md)<br>
 6) [Get Users API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1a/blob/main/REST%20APIs%20Documentation/User%20Management/Get%20Users%20API.md)
+7) [Sync AD & LADP Users API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1a/blob/main/REST%20APIs%20Documentation/User%20Management/Sync%20AD%20%26%20LADP%20Users%20API.md)
 
 ### [Event Console Management](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1a/tree/main/REST%20APIs%20Documentation/Event%20Console%20Management)
 1) [Get Event Console API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1a/blob/main/REST%20APIs%20Documentation/Event%20Console%20Management/Get%20Event%20console.md)<br>
