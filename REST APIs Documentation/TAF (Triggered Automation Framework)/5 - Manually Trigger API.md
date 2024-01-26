@@ -25,6 +25,7 @@ Use this API to make a specific trigger task.
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
 |*specificData | Object  | JSON type. The event data from a third party system. |
+|options.accessCode | String  | The field is not required. If you use the specified parameter value, this value will be used as the accessCode of the newly generated incident; if this value is not set, the accessCode will be randomly generated. |
 |options.scope | String  | Mandatory parameter in multi-tenancy scenario, if the tenantId and domainId are not indicated in the request to specify a particular working domain.<br> If there is only 1 domain in the entire NetBrain system, this parameter is not required. |
 |options.tenantId | String  | To specify a particular working tenant. |
 |options.domainId | String  | To specify a particular working domain. |

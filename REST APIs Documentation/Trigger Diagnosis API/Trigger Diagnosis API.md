@@ -157,7 +157,7 @@ False: no t include device’s neighbors|
 | option.source | string | Integrated IT System source |
 | option.nbIncidentId | string | Incident ID |
 | option.incidentDevices | Array | incident devices, data same as incident_setting.device |
-| option.specificData* | object | Integrated IT System source |
+| specificData* | object | Integrated IT System source |
 |incident_setting|object|create incident for task if not null|
 |incident_setting.subject*|string|incident subject|
 |incident_setting.description|string|incident description|
@@ -169,6 +169,14 @@ False: no t include device’s neighbors|
 |incident_setting.device[].device|string|device name|
 |incident_setting.device[].description|string|device description|
 |incident_setting.device[].interfaces|array|interface name|
+|gapp_settings|object|gapp node settings.|
+|gapp_settings.thresholdParamters|array|threshold parameters.|
+|gapp_settings.thresholdParamters.name|string|Gapp’s qapp threshold parameter name.|
+|gapp_settings.thresholdParamters.value|string|threshold value.|
+|gapp_settings.thresholdParamters.values|array|threshold value.|
+|gapp_settings.inputVariableParameters|array|input variable parameters.|
+|gapp_settings.inputVariableParameters.name|string|Gapp’s qapp input variable name.|
+|gapp_settings.inputVariableParameters.value|string|input variable value.|
 
 
 > ***Example:***
@@ -320,6 +328,58 @@ body = {
 	
     
 }
+```
+
+```
+gapp _settings  Sample:
+
+'gapp_settings': [
+
+    { #Gapp1
+
+        'thresholdParamters': [
+
+            {
+
+                "name": "Gapp.Qapp1.threhold.name", #Gapp.Qapp1 threhold name,
+
+                'value': '2'
+
+            },
+
+            {
+
+                "name": "Gapp.Qapp2.threhold.name", #Gapp.Qapp2 threhold name,
+
+                'value': '5'
+
+            }
+
+        ],
+
+        'inputVariableParameters': [
+
+            {
+
+                'name': "Gapp.Qapp1.input_node.name",  #Gapp.Qapp1 input variable name
+
+                'value': 'f0/1'
+
+            },
+
+            {
+
+                'name': "Gapp.Qapp2.input_node.name",  #Gapp.Qapp2 input variable name
+
+                'value': 'f0/1'
+
+            },
+
+        ]
+
+    }
+
+]
 ```
 
 ## Path Parameters(****required***)
