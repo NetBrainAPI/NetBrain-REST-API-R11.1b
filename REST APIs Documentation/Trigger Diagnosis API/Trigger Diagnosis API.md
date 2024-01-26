@@ -331,54 +331,31 @@ body = {
 ```
 
 ```
-gapp _settings  Sample:
+<!-- gapp _settings  Sample: -->
 
 'gapp_settings': [
-
     { #Gapp1
-
         'thresholdParamters': [
-
             {
-
                 "name": "Gapp.Qapp1.threhold.name", #Gapp.Qapp1 threhold name,
-
                 'value': '2'
-
             },
-
             {
-
                 "name": "Gapp.Qapp2.threhold.name", #Gapp.Qapp2 threhold name,
-
                 'value': '5'
-
             }
-
         ],
-
         'inputVariableParameters': [
-
             {
-
                 'name': "Gapp.Qapp1.input_node.name",  #Gapp.Qapp1 input variable name
-
                 'value': 'f0/1'
-
             },
-
             {
-
                 'name': "Gapp.Qapp2.input_node.name",  #Gapp.Qapp2 input variable name
-
                 'value': 'f0/1'
-
             },
-
         ]
-
     }
-
 ]
 ```
 
