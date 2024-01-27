@@ -25,13 +25,13 @@ Use this API to send a third party system event data to NetBrain.
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
 |*specificData | Object  | JSON type. The event data from a third party system. |
-|option.accessCode | String  | The field is not required. If you use the specified parameter value, this value will be used as the accessCode of the newly generated incident; if this value is not set, the accessCode will be randomly generated. |
 |option.scope | String  | Mandatory parameter in multi-tenancy scenario, if the tenantId and domainId are not indicated inteh request to specify a particular working domain.<br> If there is only 1 domain in the entire NetBrain system, this parameter is not required. |
 |option.tenantId | String  | To specify a particular working tenant. |
 |option.domainId | String  | To specify a particular working domain. |
 |*option.source | String  | To specify a trigger source address of an Integrated IT System Data Field definition.<br>The information must be pre-defined in a record of Integrated IT System in System Management.  |
 |option.category | String  | To specify a category of an Integrated IT System Data Field definition.<br>The information must be pre-defined in the same record of Integrated IT System in System Management as the indicated source of the same request. |
 |option.nbIncidentId | String  | Use this parameter to indicate an existing NetBrain incident. <br>This parameter is used to indicate an incident ID returned from an existing triggered task. To do so, a previously matched Incident Type information can be directly picked instead of going through NetBrain incident type lookup process, to prevent a task from utilizing NetBrain system resource unnecessarily.<br>Use as needed to improve event processing performance. **Only use this parameter if you don't want NetBrain system to do the incident type lookup.**  |
+| option.accessCode | string | The field is not required. If you use the specified parameter value, this value will be used as the accessCode of the newly generated incident; if this value is not set, the accessCode will be randomly generated. |
 |option.taskId | String  | Must be provided with nbIncidentId together. The taskId returned from a particular trigger.<br>This parameter is used to indicate a taskId returned from an existing triggered task. To do so, a previously matched Incident Type information can be directly picked instead of going through NetBrain incident type lookup process, to prevent a task from utilizing NetBrain system resource unnecessarily.<br>Use as needed to improve event processing performance. **Only use this parameter if you don't want NetBrain system to do the incident type lookup.** |
 
 

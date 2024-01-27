@@ -150,12 +150,12 @@ False: no t include device’s neighbors|
 | tracert_settings[].destination_interface | string | destination interface name |
 | tracert_settings[].timeout_seconds | int | time out seconds |
 | tracert_settings[].max_hops | int | max hops |
-| option.accessCode | string | The field is not required. If you use the specified parameter value, this value will be used as the accessCode of the newly generated incident; if this value is not set, the accessCode will be randomly generated. |
 | option.scope | string | multi-tenancy scope name |
 | option.tenantId | string | tenant id |
 | option.domainId | string | domain id |
 | option.source | string | Integrated IT System source |
 | option.nbIncidentId | string | Incident ID |
+| option.accessCode | string | The field is not required. If you use the specified parameter value, this value will be used as the accessCode of the newly generated incident; if this value is not set, the accessCode will be randomly generated. |
 | option.incidentDevices | Array | incident devices, data same as incident_setting.device |
 | specificData* | object | Integrated IT System source |
 |incident_setting|object|create incident for task if not null|
