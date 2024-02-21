@@ -158,7 +158,9 @@ False: no t include device’s neighbors|
 | option.accessCode | string | The field is not required. If you use the specified parameter value, this value will be used as the accessCode of the newly generated incident; if this value is not set, the accessCode will be randomly generated. |
 | option.incidentDevices | Array | incident devices, data same as incident_setting.device |
 | specificData* | object | Integrated IT System source |
-|incident_setting|object|create incident for task if not null|
+|incident_setting|object|create incident for task if not null
+ 
+If the option parameter is set, it means that the TAF (Triggered Automation Framework) logic is involved, and the incident_setting parameter will be invalid.|
 |incident_setting.subject*|string|incident subject|
 |incident_setting.description|string|incident description|
 |incident_setting.enablePortal|bool|enable or disable incident Portal|
