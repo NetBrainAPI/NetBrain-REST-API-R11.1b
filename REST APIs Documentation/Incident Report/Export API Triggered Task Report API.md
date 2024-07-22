@@ -66,13 +66,13 @@ start_time = "2024-03-24T01:57:00.981Z"
 | token | string  | Authentication token, get from login API. |
 
 ## Response
-All fields of Response are not provided as it is long, intensive, and could consist of sensitive information.
+All fields of Response are not provided as it is long, intensive, and could consist of sensitive information. </br>
 The important items are 'id' and 'name'. With these two fields, all information can be found.
 
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|id| int | ID of incident. |
+|id| string | ID of incident. |
 |name| string | Name of incident.  |
 |...|||
 |statusCode| int | The returned status code of executing the API.  |
