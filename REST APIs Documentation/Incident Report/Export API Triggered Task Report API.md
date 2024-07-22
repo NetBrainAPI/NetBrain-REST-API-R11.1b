@@ -21,7 +21,7 @@ Call this API to export the API triggered task report.
 
 ## Request body(****required***)
 
-If body={}, it will return all incident files
+If body={}, it will return all incident files. </br>
 Parameters of 'timeRange' are optional, 'from' or 'to' can be set according to their own requirements.
 
 |**Name**|**Type**|**Description**|
@@ -72,10 +72,10 @@ The important items are 'id' and 'name'. With these two fields, all information 
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|id| integer | ID of incident. |
-|name| object | Name of incident.  |
+|id| int | ID of incident. |
+|name| string | Name of incident.  |
 |...|||
-|statusCode| integer | The returned status code of executing the API.  |
+|statusCode| int | The returned status code of executing the API.  |
 |statusDescription| string | The explanation of the status code.  |
 
 > ***Example***
