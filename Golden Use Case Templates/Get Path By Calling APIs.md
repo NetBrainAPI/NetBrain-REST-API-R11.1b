@@ -305,10 +305,15 @@ def main(nb_url, headers, TenantName, DomainName, username, password, source_dev
     # Calling resolve device gateway API
     print("Calling resolve device gateway API---------------------------------------------------------------------------------------")
     res =  resolve_device_gateway(token, source_device, headers)
-    gateway = res["gatewayList"][0]
-    print ("Detail information of the first gateway in source device: ")
-    pprint.pprint(gateway)
-    print("")
+    gateway= ''
+    if not '790200' in res:
+        print('Gateway not found - continuing onto path calculation')
+        gateway = None
+    else:
+        gateway = res["gatewayList"][0]
+        print ("Detail information of the first gateway in source device: ")
+        pprint.pprint(gateway)
+        print("")
     
     # Calling resolve device gateway API
     print("Calling calculate path API---------------------------------------------------------------------------------------")
