@@ -170,25 +170,37 @@ def resolve_device_gateway(token, ipOrHost, headers):
 
     except Exception as e:
         print (str(e))
-        
+
 # call calculate path API
 def calculate_path(source_gateway, headers, token):
     Calculate_Path_url = nb_url + "/ServicesAPI/API/V1/CMDB/Path/Calculation"
     headers["Token"] = token
     
-    gwName = source_gateway["gatewayName"]
-    gwType = source_gateway["type"]
-    gw = source_gateway["payload"]
-
-    sourceIP = source_device
-    sourcePort = None #can be 8080
-    destIP = destination_device
-    destPort = 0
-    pathAnalysisSet = 2
-    protocol = 4
+    sourceIP = input("Source IP:")
+    sourcePort = input("Source Port (None or 8080, default: None):")
+    if not sourcePort:
+        sourcePort = None
+        print('None')
+    destIP = input("Destination IP:")
+    destPort = input("Destination Port (Default: None):")
+    if not destPort:
+        destPort = None
+        print('None')
+    protocol = 4 # 4 - IP
     isLive = True
-
-    body = {
+    
+    if source_gateway is None:
+        body = {
+        "sourceIP" : sourceIP,                # IP address of the source device.
+        "sourcePort" : sourcePort,
+        "sourceGateway" : {},    
+        "destIP" : destIP,                    # IP address of the destination device.
+        "destPort" : destPort,
+        "protocol" : protocol,                # Specify the application protocol, check online help, such as 4 for IPv4.
+        "isLive" : isLive                     # False: Current Baseline; True: Live access
+    }
+    else:
+        body = {
         "sourceIP" : sourceIP,                # IP address of the source device.
         "sourcePort" : sourcePort,
         "sourceGateway" : {
@@ -201,7 +213,6 @@ def calculate_path(source_gateway, headers, token):
         "protocol" : protocol,                # Specify the application protocol, check online help, such as 4 for IPv4.
         "isLive" : isLive                     # False: Current Baseline; True: Live access
     } 
-    
     
     try:
         response = requests.post(Calculate_Path_url, data = json.dumps(body), headers = headers, verify = False)
