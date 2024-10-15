@@ -70,10 +70,6 @@ username = "user name"
 password = "password"
 source_device = "172.24.30.1"
 destination_device = "172.24.101.2"
-source_port = None # (None or 8080, default: None)
-destination_port = 0 # (None or 8080, default: None)
-protocol = 4 # 4 - IP
-is_live = 0
 ```
 
 ### Define calling Functions
@@ -178,7 +174,12 @@ def resolve_device_gateway(token, ipOrHost, headers):
         print (str(e))
 
 # call calculate path API
-def calculate_path(headers, token):
+def calculate_path(headers, token, source_device, destination_device, source_port=None, dest_port=0, protocol=4, is_live = True):
+    '''
+    Args:
+        source_port & dest_port - None or 8080, default: None
+    '''
+
     Calculate_Path_url = nb_url + "/ServicesAPI/API/V1/CMDB/Path/Calculation"
     headers["Token"] = token
     
@@ -306,7 +307,7 @@ def main(nb_url, headers, TenantName, DomainName, username, password, source_dev
     
     # Calling calculate path API
     print("Calling calculate path API---------------------------------------------------------------------------------------")
-    task =  calculate_path(headers, token)
+    task =  calculate_path(headers, token, source_device, destination_device)
     # Calling resolve device gateway API
     print("---Calling resolve device gateway API---------------------------------------------------------------------------------------")
     res =  resolve_device_gateway(token, source_device, headers)
