@@ -177,7 +177,7 @@ def resolve_device_gateway(token, ipOrHost, headers):
 def calculate_path(headers, token, source_device, destination_device, source_port=None, destination_port=0, protocol=4, is_live = True):
     '''
     Args:
-        source_port & dest_port - None or 8080, default: None
+        source_port & destination_port - None or 8080, default: None
     '''
 
     Calculate_Path_url = nb_url + "/ServicesAPI/API/V1/CMDB/Path/Calculation"
