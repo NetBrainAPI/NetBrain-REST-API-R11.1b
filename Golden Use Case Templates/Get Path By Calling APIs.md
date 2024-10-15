@@ -174,7 +174,7 @@ def resolve_device_gateway(token, ipOrHost, headers):
         print (str(e))
 
 # call calculate path API
-def calculate_path(headers, token, source_device, destination_device, source_port=None, dest_port=0, protocol=4, is_live = True):
+def calculate_path(headers, token, source_device, destination_device, source_port=None, destination_port=0, protocol=4, is_live = True):
     '''
     Args:
         source_port & dest_port - None or 8080, default: None
