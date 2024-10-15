@@ -308,9 +308,6 @@ def main(nb_url, headers, TenantName, DomainName, username, password, source_dev
     # Calling calculate path API
     print("Calling calculate path API---------------------------------------------------------------------------------------")
     task =  calculate_path(headers, token, source_device, destination_device)
-    # Calling resolve device gateway API
-    print("---Calling resolve device gateway API---------------------------------------------------------------------------------------")
-    res =  resolve_device_gateway(token, source_device, headers)
     print ("Response of the calculate path API : ")
     pprint.pprint(task)
     print("")
