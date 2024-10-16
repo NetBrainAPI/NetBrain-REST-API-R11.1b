@@ -233,7 +233,7 @@ def get_path_result(taskID, headers, token):
             time.sleep(5)
             status = get_path_status(taskID, headers, token)
             running_status_result = status.get('result')
-            if result is not None:
+            if running_status_result is not None:
                 running_status = running_status_result.get('resultCode') 
 
         response = requests.get(Get_Path_Calulation_Result_url, headers = headers, verify = False)
