@@ -186,14 +186,20 @@ def calculate_path(headers, token, source_device, destination_device, source_por
     headers["Token"] = token
 
     source_gateway = resolve_device_gateway(token, source_device, headers)
-    gateway = source_gateway.get("gatewayList")
-    print ("Detail information of the first gateway in source device: ")
-    pprint.pprint(gateway)
-    print("")
+    gateway = {}
+    if type(source_gateway) is list:
+        gateway = source_gateway["gatewayList"]
+        print ("Detail information of the first gateway in source device: ")
+        pprint.pprint(gateway)
+        print("")
+
+    else:
+        print('Could not find gateway')
+
     body = {
         "sourceIP" : source_device,                # IP address of the source device.
         "sourcePort" : source_port,
-        "sourceGateway" : gateway[0] if gateway else {},    
+        "sourceGateway" : gateway[0] if type(source_gateway) is list else {},  
         "destIP" : destination_device,                    # IP address of the destination device.
         "destPort" : destination_port,
         "protocol" : protocol,                # Specify the application protocol, check online help, such as 4 for IPv4.
