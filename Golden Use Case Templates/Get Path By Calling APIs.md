@@ -186,7 +186,7 @@ def calculate_path(headers, token, source_device, destination_device, source_por
     headers["Token"] = token
 
     source_gateway = resolve_device_gateway(token, source_device, headers)
-    gateway = source_gateway["gatewayList"]
+    gateway = source_gateway.get("gatewayList")
     print ("Detail information of the first gateway in source device: ")
     pprint.pprint(gateway)
     print("")
@@ -232,7 +232,9 @@ def get_path_result(taskID, headers, token):
             print('Path is still running, wait for 5 seconds')
             time.sleep(5)
             status = get_path_status(taskID, headers, token)
-            running_status = status['result']['resultCode'] 
+            running_status_result = status.get('result')
+            if result is not None:
+                running_status = running_status_result.get('resultCode') 
 
         response = requests.get(Get_Path_Calulation_Result_url, headers = headers, verify = False)
         result = response.json()
