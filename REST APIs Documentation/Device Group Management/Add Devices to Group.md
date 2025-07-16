@@ -1,16 +1,17 @@
 
 # Device Group API Design
 
-## ***POST*** /V1/CMDB/DeviceGroups
-This API is used to add (create) a device group to the specified path.
+## ***POST*** /V1/CMDB/DeviceGroups/{deviceGroupID}/devices
+This API is used to add devices into the specified device group. <br>
+The `deviceGroupID` used to call this API can be retrieved from [Get Device Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Get%20Device%20Group%20API.md)
 
 ## Detail Information
 
-> **Title** : Add Device Group API<br>
+> **Title** : Add devices to Device Group API<br>
 
-> **Version** : 03/08/2022
+> **Version** : 10/08/2019.
 
-> **API Server URL** : http(s):// IP address of your NetBrain Web API Server/ServicesAPI/API/V1/CMDB/DeviceGroups
+> **API Server URL** : http(s):// IP address of your NetBrain Web API Server /ServicesAPI/API/V1//CMDB/DeviceGroups/{deviceGroupID}/devices
 
 > **Authentication** : 
 
@@ -24,10 +25,16 @@ This API is used to add (create) a device group to the specified path.
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|name* | string  | The full path of a device group. This parameter is required.  |
-|type  | string  | This parameter is only required when full path is not provided in name, and the name is a group name only instead of a group path. The type of device group - private/public/policy. This parameter is required.  |
-|description | string  | The description of the task. This field is optional.  |
+|devices* | string[] | The list of device names to add to the specified device group. This parameter is required.  |
 
+> ### ***Example***
+
+
+```python
+body = {
+    "devices":["bjretrahc001234","bjretrahc003465","bjta007616","bjta000408"]
+}
+```
 
 ## Parameters(****required***)
 
@@ -56,121 +63,77 @@ This API is used to add (create) a device group to the specified path.
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|deviceGroupID| string | The ID of device group |
 |statusCode| integer | The returned status code of executing the API.  |
 |statusDescription| string | The explanation of the status code. |
 
+> ***Example***
+
+
+```python
+{
+    "statusCode": 790200,
+    "statusDescription": "Success."
+}
+```
 
 # Full Example :
 
-> ***Example 1***
+
 ```python
 # import python modules 
 import requests
+import time
 import urllib3
+import pprint
 import json
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Set the request inputs
-token = "609299f6-abbe-4a8c-a9ff-deb6a69451c2"
-full_url = "https://unicorn-new.netbraintech.com/ServicesAPI/API/V1/CMDB/DeviceGroups"
-body = {
-    "name": "Test Device Group",
-    "type":"public",
-    "description": "This is a test Device Group for API call"
-}
-# Set proper headers
+token = "ad3c616e-5f3d-45e9-9ba1-bb71f003a098"
+deviceGroupID = '9732dca7-9709-4c49-91e1-a2310b8364d9' # get from Get Device Group API 
+nb_url = "http://192.168.28.143"
+full_url = nb_url + "/ServicesAPI/API/V1/CMDB/DeviceGroups/"+deviceGroupID+"/devices"
 headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 headers["Token"] = token
+
+data = {
+    "devices":["BJ_Acc_SW1","BJ_Acc_SW1"]
+}
+
 try:
-    # Do the HTTP request
-    response = requests.post(full_url, data = json.dumps(body), headers=headers, verify=False)
-    # Check for HTTP codes other than 200
+    response = requests.post(full_url, data = json.dumps(data), headers = headers, verify = False)
     if response.status_code == 200:
-        # Decode the JSON response into a dictionary and use the data
         result = response.json()
         print (result)
     else:
-        print ("Failed to Create a Device Group! - " + str(response.text))
+        print ("Failed to Add Devices to the Device Group! - " + str(response.text))
+    
+except Exception as e:
+    print (str(e)) 
 
-except Exception as e: print (str(e))
 ```
-
-> ***Example 2***
-```python
-# import python modules 
-import requests
-import urllib3
-import json
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-# Set the request inputs
-token = "609299f6-abbe-4a8c-a9ff-deb6a69451c2"
-full_url = "https://unicorn-new.netbraintech.com/ServicesAPI/API/V1/CMDB/DeviceGroups"
-body = {
-    "name": "Shared Device Groups/Test Device Group2",
-}
-# Set proper headers
-headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
-headers["Token"] = token
-try:
-    # Do the HTTP request
-    response = requests.post(full_url, data = json.dumps(body), headers=headers, verify=False)
-    # Check for HTTP codes other than 200
-    if response.status_code == 200:
-        # Decode the JSON response into a dictionary and use the data
-        result = response.json()
-        print (result)
-    else:
-        print ("Failed to Create a Device Group! - " + str(response.text))
-
-except Exception as e: print (str(e))
-
+```
+{'statusCode': 790200, 'statusDescription': 'Success.'}
 ```
 
 # cURL Code from Postman
 ```python
-curl --location --request POST 'https://unicorn-new.netbraintech.com/ServicesAPI/API/V1/CMDB/DeviceGroups' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json' \
---header 'token: 609299f6-abbe-4a8c-a9ff-deb6a69451c2' \
---data-raw '{
-    "name":"Shared Device Groups/Test Device Group"  
-}
-'
+curl -X POST \
+  http://192.168.28.143/ServicesAPI/API/V1/CMDB/DeviceGroups/9732dca7-9709-4c49-91e1-a2310b8364d9/devices \
+  -H 'accept: application/json' \
+  -H 'content-type: application/json' \
+  -H 'token: ad3c616e-5f3d-45e9-9ba1-bb71f003a098' \
+  -d '{
+    "devices":["BJ_Acc_SW1","BJ_Acc_SW1"]
+}'
 ```
+
 # Error Examples
-## Error Example 1: Null parameter - parameter {} cannot be null
-```
-Input:
-    "name": "",
-    "type": "policy"
-    
-Response:
-    "Parameter cannot be null - 
-        {
-            "statusCode":791000,
-            "statusDescription":"Null parameter: the parameter '{}' cannot be null."
-        }"
-```
-## Error Example 2: Device Group: {}, Type: {} Already Exists.
-```
-Input:
-    "name":"Shared Device Groups/Test Device Group",
-    "type": "policy"
-    
-Response:
-    "Device Group already exists! - 
-        {
-            "statusCode":791007,
-            "statusDescription":"device group: Test Device Group, location in name: Shared Device Groups already exists."
-        }"
-```
-## Error Example 3: You are not allowed to perform this operation
+## Error Example 1: You are not allowed to perform this operation
 ```
 Input:
     User does not have the privilege to make changes to shared device groups.
     
 Response:
-    Failed to Create a Device Group! - {"statusCode":799001,"statusDescription":"You are not allowed to perform the operation."}
+    Failed to Add Devices to the Device Group! - {"statusCode":799001,"statusDescription":"You are not allowed to perform the operation."}
 ```
