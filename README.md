@@ -91,7 +91,8 @@ To see the list of all REST APIs view "REST APIs Documentation".<br>
 2) [Add Devices to Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Add%20Devices%20to%20Group.md)<br>
 3) [Delete Device Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Delete%20Device%20Group.md)<br>
 4) [Delete Devices from Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Delete%20Devices%20from%20Group.md)<br>
-5) [Get Devices of Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Get%20Devices%20of%20Group.md)<br>
+5) [Get Device Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Get%20Device%20Group%20API.md)
+6) [Get Devices of Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Get%20Devices%20of%20Group.md)<br>
 
 ### [Device Interfaces Management](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/tree/main/REST%20APIs%20Documentation/Device%20Interfaces%20Management) 
 1) [Create Interface Attribute API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Device%20Interfaces%20Management/Create%20Interface%20Attribute%20API.md)<br>
